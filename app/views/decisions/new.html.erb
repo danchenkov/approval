@@ -1,0 +1,14 @@
+<% content_for :title, "New decision" %>
+
+<h1>New decision</h1>
+
+<p>Create a request and a reviewer first, then record an approval or rejection.</p>
+
+<%# Pass the controller's model into the form partial as a local variable. %>
+<%= render "form", decision: @decision %>
+
+<br>
+
+<div>
+  <%= link_to "Back to decisions", decisions_path %>
+</div>

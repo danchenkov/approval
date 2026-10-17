@@ -1,0 +1,31 @@
+
+<h1>Request details</h1>
+<%# Rails finds _request.html.erb and supplies a local variable named request. %>
+<%= render @request %>
+
+<section aria-labelledby="decisions-heading">
+  <h2 id="decisions-heading">Decisions</h2>
+  <%= link_to "Record a decision", new_decision_path(request_id: @request.id) %>
+  <%# This is a list of editable decisions, not yet an immutable audit trail. %>
+  <% if @decisions.empty? %>
+    <p>No decisions recorded yet.</p>
+  <% else %>
+    <% @decisions.each do |decision| %>
+      <article>
+        <h3><%= decision.outcome.capitalize %> by <%= decision.reviewer.name %></h3>
+        <p><%= decision.created_at.to_fs(:long) %></p>
+        <%# simple_format adds paragraphs while escaping user-entered HTML. %>
+        <%= simple_format(decision.comment) %>
+        <%= link_to "View decision", decision_path(decision) %>
+      </article>
+    <% end %>
+  <% end %>
+</section>
+
+<div>
+  <%= link_to "Edit this request", edit_request_path(@request) %> |
+  <%= link_to "Back to requests", requests_path %>
+
+  <%# A link performs GET; button_to creates a form for a state-changing DELETE. %>
+  <%= button_to "Delete this request", @request, method: :delete %>
+</div>

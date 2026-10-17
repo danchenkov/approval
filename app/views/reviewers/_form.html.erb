@@ -1,0 +1,30 @@
+<%# A partial starts with _. Both new and edit render this shared form. %>
+<%# form_with chooses POST for a new row and PATCH for an existing row, and adds CSRF protection. %>
+<%= form_with(model: reviewer) do |form| %>
+  <%# Validation errors belong to the unsaved/invalid model, not a separate error page. %>
+  <% if reviewer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(reviewer.errors.count, "error") %> prohibited this reviewer from being saved:</h2>
+
+      <ul>
+        <% reviewer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

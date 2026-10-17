@@ -1,0 +1,17 @@
+<%# content_for supplies the browser-tab title used by the shared layout. %>
+
+<% content_for :title, "Decisions" %>
+
+<h1>Decisions</h1>
+
+<div id="decisions">
+  <%# Loop over the collection loaded by index; render selects the model partial. %>
+  <% @decisions.each do |decision| %>
+    <%= render decision %>
+    <p>
+      <%= link_to "Show this decision", decision %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New decision", new_decision_path %>

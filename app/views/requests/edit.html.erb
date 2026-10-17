@@ -1,0 +1,13 @@
+<% content_for :title, "Editing request" %>
+
+<h1>Editing request</h1>
+
+<%# Pass the controller's model into the form partial as a local variable. %>
+<%= render "form", request: @request %>
+
+<br>
+
+<div>
+  <%= link_to "Show this request", @request %> |
+  <%= link_to "Back to requests", requests_path %>
+</div>

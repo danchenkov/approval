@@ -1,0 +1,12 @@
+one:
+  name: Alex Reviewer
+  email: alex@example.test
+
+two:
+  name: Morgan Reviewer
+  email: morgan@example.test
+
+# An unreferenced reviewer lets us test successful deletion.
+unused:
+  name: Unassigned Reviewer
+  email: unused@example.test

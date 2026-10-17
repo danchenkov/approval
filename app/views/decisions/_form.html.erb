@@ -1,0 +1,41 @@
+<%# A partial starts with _. Both new and edit render this shared form. %>
+<%# form_with chooses POST for a new row and PATCH for an existing row, and adds CSRF protection. %>
+<%= form_with(model: decision) do |form| %>
+  <%# Validation errors belong to the unsaved/invalid model, not a separate error page. %>
+  <% if decision.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(decision.errors.count, "error") %> prohibited this decision from being saved:</h2>
+
+      <ul>
+        <% decision.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :request_id, style: "display: block" %>
+    <%# Display titles, submit IDs: association fields refer to existing rows. %>
+    <%= form.collection_select :request_id, Request.order(:title), :id, :title, prompt: "Choose a request" %>
+  </div>
+
+  <div>
+    <%= form.label :reviewer_id, style: "display: block" %>
+    <%= form.collection_select :reviewer_id, Reviewer.order(:name), :id, :name, prompt: "Choose a reviewer" %>
+  </div>
+
+  <div>
+    <%= form.label :outcome, style: "display: block" %>
+    <%= form.select :outcome, Decision::OUTCOMES.map { |outcome| [ outcome.capitalize, outcome ] }, prompt: "Choose an outcome" %>
+  </div>
+
+  <div>
+    <%= form.label :comment, style: "display: block" %>
+    <%= form.textarea :comment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

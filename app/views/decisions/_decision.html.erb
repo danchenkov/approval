@@ -1,0 +1,22 @@
+<div id="<%= dom_id decision %>">
+  <div>
+    <strong>Request:</strong>
+    <%= link_to decision.request.title, request_path(decision.request) %>
+  </div>
+
+  <div>
+    <strong>Reviewer:</strong>
+    <%= link_to decision.reviewer.name, reviewer_path(decision.reviewer) %>
+  </div>
+
+  <div>
+    <strong>Outcome:</strong>
+    <%= decision.outcome %>
+  </div>
+
+  <div>
+    <strong>Comment:</strong>
+    <%= decision.comment %>
+  </div>
+
+</div>

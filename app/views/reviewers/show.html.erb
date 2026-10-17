@@ -1,0 +1,10 @@
+
+<%= render @reviewer %>
+
+<div>
+  <%= link_to "Edit this reviewer", edit_reviewer_path(@reviewer) %> |
+  <%= link_to "Back to reviewers", reviewers_path %>
+
+  <%# A link performs GET; button_to creates a form for a state-changing DELETE. %>
+  <%= button_to "Delete this reviewer", @reviewer, method: :delete %>
+</div>

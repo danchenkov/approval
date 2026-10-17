@@ -1,0 +1,17 @@
+<%# content_for supplies the browser-tab title used by the shared layout. %>
+
+<% content_for :title, "Reviewers" %>
+
+<h1>Reviewers</h1>
+
+<div id="reviewers">
+  <%# Loop over the collection loaded by index; render selects the model partial. %>
+  <% @reviewers.each do |reviewer| %>
+    <%= render reviewer %>
+    <p>
+      <%= link_to "Show this reviewer", reviewer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New reviewer", new_reviewer_path %>

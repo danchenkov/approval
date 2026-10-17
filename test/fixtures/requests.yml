@@ -1,0 +1,10 @@
+# Named fixtures are repeatable test records. requests(:one) loads this row.
+one:
+  title: New laptop
+  description: Replace a broken development laptop.
+  requester_email: sam@example.test
+
+two:
+  title: Conference ticket
+  description: Attend the local Ruby conference.
+  requester_email: lee@example.test

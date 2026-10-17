@@ -1,0 +1,12 @@
+# Association names refer to labels in other fixtures, not numeric IDs.
+one:
+  request: one
+  reviewer: one
+  outcome: approved
+  comment: Replacement is within budget.
+
+two:
+  request: two
+  reviewer: two
+  outcome: rejected
+  comment: Please choose a less expensive event.
